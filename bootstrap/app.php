@@ -12,7 +12,18 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->web(append: [
+            \App\Http\Middleware\HandleInertiaRequests::class,
+            \App\Http\Middleware\ShareInertiaData::class,
+        ]);
+
+        $middleware->alias([
+            'setLocale'   => \App\Http\Middleware\SetLocale::class,
+            'shareInertia'=> \App\Http\Middleware\ShareInertiaData::class,
+        ]);
+
+        // Inertia SSR support
+        $middleware->encryptCookies(except: []);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

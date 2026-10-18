@@ -1,0 +1,53 @@
+<?php
+
+return [
+    'types' => [
+        '1br'       => '1-Bedroom Suite',
+        '2br'       => '2-Bedroom Suite',
+        '3br'       => '3-Bedroom Suite',
+        'penthouse' => 'Penthouse',
+    ],
+    'labels' => [
+        'interior'   => 'Interior',
+        'terrace'    => 'Terrace',
+        'total'      => 'Total',
+        'bedrooms'   => 'Bedrooms',
+        'bathrooms'  => 'Bathrooms',
+        'sleeps'     => 'Sleeps up to :count',
+        'from'       => 'From',
+        'per_night'  => 'per night',
+        'view_stay'  => 'View stay',
+        'book_stay'  => 'Book this stay',
+        'check_availability' => 'Check availability',
+    ],
+    'views' => [
+        'garden'    => 'Garden view',
+        'ocean'     => 'Ocean view',
+        'panoramic' => 'Panoramic view',
+    ],
+    'amenities' => [
+        'outdoor_pool'  => 'Outdoor pool (heated)',
+        'indoor_pool'   => 'Indoor pool',
+        'pool_bar'      => 'Pool bar',
+        'yoga_center'   => 'Yoga center',
+        'firepits'      => 'Firepits',
+        'gym'           => 'Fitness center',
+        'parking'       => 'Free parking (1 space)',
+        'self_checkin'  => 'Self check-in',
+        'concierge'     => 'Concierge',
+        'ac'            => 'Air conditioning',
+        'wifi'          => 'High-speed Wi-Fi',
+        'kitchen'       => 'Fully equipped kitchen',
+        'washer'        => 'Washer/dryer',
+        'balcony'       => 'Private terrace',
+    ],
+    'policies' => [
+        'checkin'        => 'Check-in from 3:00 PM',
+        'checkout'       => 'Check-out by 11:00 AM',
+        'cancellation'   => 'Full refund if cancelled 30+ days before check-in',
+        'min_stay'       => 'Minimum :nights nights',
+        'no_parties'     => 'No parties or events',
+        'no_smoking'     => 'No smoking inside',
+        'taxes_note'     => 'Rates include IVA (16%) and ISH (5%)',
+    ],
+];

@@ -1,0 +1,53 @@
+<?php
+
+return [
+    'types' => [
+        '1br'       => 'Suite de 1 recámara',
+        '2br'       => 'Suite de 2 recámaras',
+        '3br'       => 'Suite de 3 recámaras',
+        'penthouse'  => 'Penthouse',
+    ],
+    'labels' => [
+        'interior'   => 'Interior',
+        'terrace'    => 'Terraza',
+        'total'      => 'Total',
+        'bedrooms'   => 'Recámaras',
+        'bathrooms'  => 'Baños',
+        'sleeps'     => 'Hasta :count personas',
+        'from'       => 'Desde',
+        'per_night'  => 'por noche',
+        'view_stay'  => 'Ver estancia',
+        'book_stay'  => 'Reservar esta estancia',
+        'check_availability' => 'Ver disponibilidad',
+    ],
+    'views' => [
+        'garden'    => 'Vista al jardín',
+        'ocean'     => 'Vista al mar',
+        'panoramic' => 'Vista panorámica',
+    ],
+    'amenities' => [
+        'outdoor_pool'  => 'Alberca exterior (climatizada)',
+        'indoor_pool'   => 'Alberca interior',
+        'pool_bar'      => 'Bar de alberca',
+        'yoga_center'   => 'Centro de yoga',
+        'firepits'      => 'Fogatas',
+        'gym'           => 'Gimnasio',
+        'parking'       => 'Estacionamiento gratuito (1 lugar)',
+        'self_checkin'  => 'Auto check-in',
+        'concierge'     => 'Conserje',
+        'ac'            => 'Aire acondicionado',
+        'wifi'          => 'Wi-Fi de alta velocidad',
+        'kitchen'       => 'Cocina totalmente equipada',
+        'washer'        => 'Lavadora/secadora',
+        'balcony'       => 'Terraza privada',
+    ],
+    'policies' => [
+        'checkin'        => 'Check-in desde las 3:00 PM',
+        'checkout'       => 'Check-out antes de las 11:00 AM',
+        'cancellation'   => 'Reembolso completo si se cancela 30+ días antes del check-in',
+        'min_stay'       => 'Mínimo :nights noches',
+        'no_parties'     => 'No se permiten fiestas o eventos',
+        'no_smoking'     => 'No fumar en interiores',
+        'taxes_note'     => 'Las tarifas incluyen IVA (16%) e ISH (5%)',
+    ],
+];
