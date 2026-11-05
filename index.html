@@ -1256,8 +1256,9 @@ function handleHbBook() {
   var ci = document.getElementById('hb-checkin').value;
   var co = document.getElementById('hb-checkout').value;
   if (!ci || !co) return;
-  var url = new URL('https://delmar-monterocella.guestybookings.com');
-  url.searchParams.set('checkIn', ci); url.searchParams.set('checkOut', co); url.searchParams.set('guests', hbGuests);
+  var url = new URL('https://delmar-monterocella.guestybookings.com/en/properties');
+  url.searchParams.set('checkIn', ci); url.searchParams.set('checkOut', co);
+  url.searchParams.set('minOccupancy', hbGuests); url.searchParams.set('adults', hbGuests); url.searchParams.set('rooms', 1);
   window.open(url.toString(), '_blank', 'noopener,noreferrer');
 }
 var barGuests = 2;
@@ -1266,8 +1267,9 @@ function handleBarBook() {
   var ci = document.getElementById('bar-checkin').value;
   var co = document.getElementById('bar-checkout').value;
   if (!ci || !co) return;
-  var url = new URL('https://delmar-monterocella.guestybookings.com');
-  url.searchParams.set('checkIn', ci); url.searchParams.set('checkOut', co); url.searchParams.set('guests', barGuests);
+  var url = new URL('https://delmar-monterocella.guestybookings.com/en/properties');
+  url.searchParams.set('checkIn', ci); url.searchParams.set('checkOut', co);
+  url.searchParams.set('minOccupancy', barGuests); url.searchParams.set('adults', barGuests); url.searchParams.set('rooms', 1);
   window.open(url.toString(), '_blank', 'noopener,noreferrer');
 }
 
