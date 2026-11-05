@@ -1,5 +1,18 @@
-<title>Monte Rocella</title>
+<title>Monte Rocella Los Cabos | Book Direct &amp; Save 10%</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Book Monte Rocella direct and save 10%. Luxury condos in Los Cabos with 2 pools, Pickleball Court, ocean views and world-class amenities. Use code WELOVECABO.">
+<meta property="og:title" content="Monte Rocella Los Cabos — Book Direct &amp; Save 10%">
+<meta property="og:description" content="Luxury condos in Los Cabos. 2 pools, Pickleball Court, 2 Yoga Studios, ocean views. Book direct with WELOVECABO for 10% off.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dferrera-creator.github.io/monterocella/">
+<meta property="og:image" content="https://dferrera-creator.github.io/monterocella/og-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Monte Rocella Los Cabos | Book Direct &amp; Save 10%">
+<meta name="twitter:description" content="Luxury condos in Los Cabos. Direct booking saves 10%. Code WELOVECABO.">
+<meta name="twitter:image" content="https://dferrera-creator.github.io/monterocella/og-preview.jpg">
+<link rel="canonical" href="https://dferrera-creator.github.io/monterocella/">
+<script>document.documentElement.lang="en";</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter+Tight:wght@300;400;500;600&display=swap">
 <style>
 :root {
@@ -1137,7 +1150,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); f
         </div>
         <div class="ebc-promo-btns">
           <a href="#booking" class="ebc-btn-dark">Book Now</a>
-          <a href="#rooms" class="ebc-btn-outline">Explore Stays</a>
+          <a href="#stays" class="ebc-btn-outline">Explore Stays</a>
         </div>
       </div>
 
@@ -1256,9 +1269,8 @@ function handleHbBook() {
   var ci = document.getElementById('hb-checkin').value;
   var co = document.getElementById('hb-checkout').value;
   if (!ci || !co) return;
-  var url = new URL('https://delmar-monterocella.guestybookings.com/en/properties');
-  url.searchParams.set('checkIn', ci); url.searchParams.set('checkOut', co);
-  url.searchParams.set('minOccupancy', hbGuests); url.searchParams.set('adults', hbGuests); url.searchParams.set('rooms', 1);
+  var url = new URL('https://delmar-monterocella.guestybookings.com');
+  url.searchParams.set('checkIn', ci); url.searchParams.set('checkOut', co); url.searchParams.set('guests', hbGuests);
   window.open(url.toString(), '_blank', 'noopener,noreferrer');
 }
 var barGuests = 2;
@@ -1267,9 +1279,8 @@ function handleBarBook() {
   var ci = document.getElementById('bar-checkin').value;
   var co = document.getElementById('bar-checkout').value;
   if (!ci || !co) return;
-  var url = new URL('https://delmar-monterocella.guestybookings.com/en/properties');
-  url.searchParams.set('checkIn', ci); url.searchParams.set('checkOut', co);
-  url.searchParams.set('minOccupancy', barGuests); url.searchParams.set('adults', barGuests); url.searchParams.set('rooms', 1);
+  var url = new URL('https://delmar-monterocella.guestybookings.com');
+  url.searchParams.set('checkIn', ci); url.searchParams.set('checkOut', co); url.searchParams.set('guests', barGuests);
   window.open(url.toString(), '_blank', 'noopener,noreferrer');
 }
 
