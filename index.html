@@ -47,7 +47,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); f
   padding: 8px max(16px, env(safe-area-inset-left, 0px));
   display: flex; align-items: center; justify-content: center;
 }
-.promo-banner p { font-size: 12px; font-weight: 500; letter-spacing: 0.03em; color: var(--color-obsidian); text-align: center; }
+.promo-banner p { font-size: 12px; line-height: 1.3; padding-right: 22px; font-weight: 500; letter-spacing: 0.03em; color: var(--color-obsidian); text-align: center; }
 .promo-banner strong { font-weight: 700; letter-spacing: 0.06em; }
 .promo-close {
   position: absolute; right: max(16px, env(safe-area-inset-right, 0px));
@@ -59,7 +59,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); f
 
 /* HEADER */
 .header {
-  position: fixed; left: 0; right: 0; z-index: 100; top: 33px;
+  position: fixed; left: 0; right: 0; z-index: 100; top: var(--promo-h, 33px);
   background: rgba(13,13,13,0.32); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
   transition: background var(--duration-base) var(--ease-brand),
@@ -319,7 +319,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); f
 
 /* TA STRIP */
 .ta-bar {
-  position: absolute; left: 0; right: 0; top: 101px; z-index: 5;
+  position: absolute; left: 0; right: 0; top: calc(var(--promo-h, 33px) + 68px); z-index: 5;
   display: flex; align-items: center; justify-content: center; gap: 10px;
   padding: 8px max(24px, env(safe-area-inset-left, 0px));
   background: rgba(13,13,13,0.42); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
@@ -1184,27 +1184,6 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); f
         </div>
       </div>
 
-      <!-- Card 5: Bottom-middle — Adventures -->
-      <div class="ebc ebc-half ebc-photo" style="background:linear-gradient(200deg,#0a1a3a 0%,#0d2a5a 55%,#1a3a6a 100%);">
-        <div class="ebc-overlay"></div>
-        <div class="ebc-icon-top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3"/><path d="M9 10c0 8 6 10 6 10M12 10v9"/></svg></div>
-        <div class="ebc-body">
-          <div class="ebc-eyebrow">Immerse Yourself</div>
-          <div class="ebc-headline">Scuba &amp; Water Adventures</div>
-          <a href="#" class="ebc-arrow">&#8250;</a>
-        </div>
-      </div>
-
-      <!-- Card 6: Bottom-right — Romantic -->
-      <div class="ebc ebc-half ebc-photo" style="background:linear-gradient(135deg,#2a0a1a 0%,#5a1a2a 50%,#8b2a3a 100%);">
-        <div class="ebc-overlay"></div>
-        <div class="ebc-icon-top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2a3 3 0 000 6 3 3 0 000-6zM12 16a3 3 0 000 6 3 3 0 000-6zM2 12a3 3 0 006 0 3 3 0 00-6 0zM16 12a3 3 0 006 0 3 3 0 00-6 0z"/></svg></div>
-        <div class="ebc-body">
-          <div class="ebc-eyebrow">Romance &amp; Celebrations</div>
-          <div class="ebc-headline">Romantic Getaway Package</div>
-          <a href="#services" class="ebc-arrow">&#8250;</a>
-        </div>
-      </div>
 
     </div>
   </div>
@@ -1241,6 +1220,8 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); f
 
 <script>
 var promoBannerVisible = true;
+function setPromoH(){var b=document.getElementById('promo-banner');if(b&&b.style.display!=='none'){document.documentElement.style.setProperty('--promo-h',Math.ceil(b.getBoundingClientRect().height)+'px');}}
+setPromoH();window.addEventListener('resize',setPromoH);window.addEventListener('load',setPromoH);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(setPromoH);
 function dismissPromo() {
   document.getElementById('promo-banner').style.display = 'none';
   document.body.classList.add('promo-hidden');
@@ -1288,8 +1269,8 @@ function handleHbBook() {
   var ci = document.getElementById('hb-checkin').value;
   var co = document.getElementById('hb-checkout').value;
   if (!ci || !co) return;
-  var url = new URL('https://delmar-monterocella.guestybookings.com');
-  url.searchParams.set('checkIn', ci); url.searchParams.set('checkOut', co); url.searchParams.set('guests', hbGuests);
+  var url = new URL('https://delmar-monterocella.guestybookings.com/properties');
+  url.searchParams.set('checkIn', ci); url.searchParams.set('checkOut', co); url.searchParams.set('minOccupancy', hbGuests);
   window.open(url.toString(), '_blank', 'noopener,noreferrer');
 }
 var barGuests = 2;
@@ -1298,8 +1279,8 @@ function handleBarBook() {
   var ci = document.getElementById('bar-checkin').value;
   var co = document.getElementById('bar-checkout').value;
   if (!ci || !co) return;
-  var url = new URL('https://delmar-monterocella.guestybookings.com');
-  url.searchParams.set('checkIn', ci); url.searchParams.set('checkOut', co); url.searchParams.set('guests', barGuests);
+  var url = new URL('https://delmar-monterocella.guestybookings.com/properties');
+  url.searchParams.set('checkIn', ci); url.searchParams.set('checkOut', co); url.searchParams.set('minOccupancy', barGuests);
   window.open(url.toString(), '_blank', 'noopener,noreferrer');
 }
 
