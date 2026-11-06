@@ -675,6 +675,21 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); f
 }
 .hi-icon-svg svg { display: block; }
 
+
+/* GOOGLE REVIEWS */
+.g-reviews-head{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:12px;color:var(--fg)}
+.g-score{font-family:var(--font-display);font-size:44px;line-height:1}
+.g-stars{color:var(--color-sand);letter-spacing:2px;font-size:18px;white-space:nowrap}
+.g-count{font-size:13px;color:var(--fg-muted)}
+.g-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-top:40px}
+.g-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.g-card-top{display:flex;align-items:center;gap:12px}
+.g-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;background:var(--border)}
+.g-name{font-weight:600;font-size:14px;color:var(--fg);text-decoration:none}
+.g-date{font-size:12px;color:var(--fg-muted)}
+.g-text{font-size:14px;line-height:1.7;color:var(--fg)}
+.g-foot{margin-top:28px;text-align:center;font-size:12px;color:var(--fg-muted)}
+.g-foot a{color:var(--accent);text-decoration:none;font-weight:500}
 </style>
 
 <!-- PROMO BANNER -->
@@ -1079,6 +1094,36 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); f
     </div>
   </div>
 </section>
+
+<!-- GOOGLE REVIEWS -->
+<section class="section" id="reviews" hidden>
+  <div class="section-inner">
+    <p class="section-eyebrow" style="text-align:center">Guest reviews</p>
+    <h2 class="section-title" style="text-align:center">What guests say</h2>
+    <div class="g-reviews-head" id="g-head"></div>
+    <div class="g-grid" id="g-grid"></div>
+    <p class="g-foot">Reviews from <a href="https://www.google.com/maps/place/?q=place_id:ChIJOX9PjD5Lr4YRfohZkLhabCU" target="_blank" rel="noopener">Google</a></p>
+  </div>
+</section>
+<script>
+(function(){
+  var KEY="AIzaSyALXayPspCHuZmcMVqBow90NglAx41X3L0",PID="ChIJOX9PjD5Lr4YRfohZkLhabCU";
+  function esc(t){var d=document.createElement("div");d.textContent=t==null?"":t;return d.innerHTML;}
+  function stars(n){n=Math.round(n);return "\u2605".repeat(n)+"\u2606".repeat(5-n);}
+  fetch("https://places.googleapis.com/v1/places/"+PID+"?fields=rating,userRatingCount,reviews&key="+KEY)
+   .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
+   .then(function(d){
+     var rv=(d.reviews||[]).slice(0,5);
+     if(!rv.length)return;
+     document.getElementById("g-head").innerHTML='<span class="g-score">'+(d.rating||0).toFixed(1)+'</span><span><span class="g-stars">'+stars(d.rating||5)+'</span><br><span class="g-count">'+(d.userRatingCount||rv.length)+' Google reviews</span></span>';
+     document.getElementById("g-grid").innerHTML=rv.map(function(v){
+       var a=v.authorAttribution||{},t=(v.text&&v.text.text)||(v.originalText&&v.originalText.text)||"";
+       return '<article class="g-card"><div class="g-card-top">'+(a.photoUri?'<img class="g-avatar" src="'+esc(a.photoUri)+'" alt="" referrerpolicy="no-referrer" loading="lazy">':'<span class="g-avatar"></span>')+'<div><a class="g-name" href="'+esc(a.uri||"#")+'" target="_blank" rel="noopener">'+esc(a.displayName||"Guest")+'</a><div class="g-date">'+esc(v.relativePublishTimeDescription||"")+'</div></div></div><div class="g-stars">'+stars(v.rating||5)+'</div><p class="g-text">'+esc(t)+'</p></article>';
+     }).join("");
+     document.getElementById("reviews").hidden=false;
+   }).catch(function(){});
+})();
+</script>
 
 <!-- FAQ -->
 <section class="section faq-section" id="faq">
